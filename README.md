@@ -25,7 +25,7 @@ will build a `mhe-exps` docker image for which the three experiment apps' binari
 
 ## Running
 
-### Multiparty-Input-Selection (PIR) and PSI and Element-Wise-Vector-Product (PSI) experiments
+### Multiparty-Input-Selection (PIR) and Element-Wise-Vector-Product (PSI) experiments
 
 The PIR and PSI experiment are local and running the client and server within the same process:
 ```
