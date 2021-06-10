@@ -35,7 +35,7 @@ docker run --rm mhe-exps psi    // runs the PSI experiment
 
 ### Multiplication-Triple-Generation experiment
 
-The Beaver-triples-generation experiment runs every party in its own process, by running several instances of the `mhe-exps` image.
+The Beaver-triples-generation experiment runs every party in its own process, by running several instances of the `mhe-exps` image within a new docker network named `mpc-net`.
 The `run-tpl-parties.sh` script automates the process of starting the experiment for a given generation technique and number of parties. 
 ```
 ./run-tpl-parties.sh [he|mhe] [n_parties] [filename]
@@ -49,9 +49,9 @@ Finally, the `run-tpl-exp.sh` automates the process of running the Beaver-triple
 
 There are two make targets for the clean-up tasks: 
 
-`make clean`: deletes the `output` directory
+`make clean`: deletes the `output` directory.
 
-`make clean-all`: removes the `mhe-exps` images from the Docker host
+`make clean-all`: removes the `mhe-exps` images from the Docker host and the `mpc-net` docker network.
 
 ## References
 

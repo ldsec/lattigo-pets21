@@ -6,3 +6,4 @@ clean:
 
 clean-all:
 	docker image rm mhe-exps
+	docker network rm mpc-net 
