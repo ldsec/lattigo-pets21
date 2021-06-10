@@ -36,14 +36,14 @@ docker run --rm mhe-exps psi    // runs the PSI experiment
 ### Multiplication-Triple-Generation experiment
 
 The Beaver-triples-generation experiment runs every party in its own process, by running several instances of the `mhe-exps` image.
-The `run-parties.sh` script automates the process of starting the experiment for a given generation technique, number of parties and number of required triples. 
+The `run-tpl-parties.sh` script automates the process of starting the experiment for a given generation technique, number of parties and number of required triples. 
 ```
-./run-parties.sh [he|mhe] [n_parties] [n_triples] [filename]
+./run-tpl-parties.sh [he|mhe] [n_parties] [n_triples] [filename]
 ```
-The `stdout` of party 0 is always redirected to the host `stdout`. The script also accepts a filename as an option final argument.
+The `stdout` of party 0 is redirected to the host `stdout`. The script also accepts a filename as an option final argument.
 If provided, it saves the `stdout` of each party to a file `[filename]_p[party id].txt`. 
 
-Finally, the `run-exp-tpl.sh` automates the process of running the Beaver-triples-generation experiment for both the `he` and `mhe` generation techniques, for 2 to 16 parties. The `stdout` of each party in each experiment is redirected to a file in the `output` directory.
+Finally, the `run-tpl-exp.sh` automates the process of running the Beaver-triples-generation experiment for both the `he` and `mhe` generation techniques, for 2 to 16 parties. The `stdout` of each party in each experiment is redirected to a file in the `output` directory.
 
 ## Cleaning up
 

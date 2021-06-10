@@ -21,7 +21,7 @@ do
   do
     for (( r=1; r<=2; r++ ))
     do
-        ./run-parties.sh $proto $c $NBEAVER output/exp_tpl_${proto}_${c}_${r}
+        ./run-tpl-parties.sh $proto $c $NBEAVER output/exp_tpl_${proto}_${c}_${r}
         sleep 5;
     done
   done
