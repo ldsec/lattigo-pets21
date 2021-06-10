@@ -17,7 +17,7 @@ mkdir -p output
 
 for proto in $protos
 do
-  for (( c=2; c<=2; c=c+1 ))
+  for (( c=2; c<=16; c=c+1 ))
   do
     for (( r=1; r<=2; r++ ))
     do
