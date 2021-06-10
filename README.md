@@ -15,6 +15,10 @@ The following sowftare items are artifacts of the article:
 |  `lattigo-pets21/apps/tpl`             | a Go application that implements the Beaver-triples-generation experiment                                          |
 
 
+The `lattigo/v2/dbfv` package is integrated in the official Lattigo repository at [https://github.com/ldsec/lattigo](https://github.com/ldsec/lattigo).
+The `lattigo-pets21/apps` module is in this repository and imports the latest version of the `lattigo/v2/dbfv` package via a Go module dependency.
+This repository includes a `Makefile`, a `Dockerfile` and several scripts that automate building and running our code. 
+
 ## Building
 
 From a clone of this repository on a machine running Docker, running
@@ -35,7 +39,7 @@ docker run --rm mhe-exps psi    // runs the PSI experiment
 
 ### Multiplication-Triple-Generation experiment
 
-The Beaver-triples-generation experiment runs every party in its own process, by running several instances of the `mhe-exps` image within a new docker network named `mpc-net`.
+The Beaver-triples-generation experiment runs every party in its own process, by running several instances of the `mhe-exps` image within docker network named `mpc-net`.
 The `run-tpl-parties.sh` script automates the process of starting the experiment for a given generation technique and number of parties. 
 ```
 ./run-tpl-parties.sh [he|mhe] [n_parties] [filename]
