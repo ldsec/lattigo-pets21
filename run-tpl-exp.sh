@@ -1,8 +1,5 @@
 #!/bin/bash
 
-NBEAVER=8192
-
-
 protos="he mhe"
 
 localNet=0
@@ -19,9 +16,9 @@ for proto in $protos
 do
   for (( c=2; c<=16; c=c+1 ))
   do
-    for (( r=1; r<=2; r++ ))
+    for (( r=1; r<=3; r++ ))
     do
-        ./run-tpl-parties.sh $proto $c $NBEAVER output/exp_tpl_${proto}_${c}_${r}
+        ./run-tpl-parties.sh $proto $c output/exp_tpl_${proto}_${c}_${r}
         sleep 5;
     done
   done

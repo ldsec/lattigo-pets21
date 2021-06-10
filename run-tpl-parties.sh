@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$#" -eq 0 ]; then
-    echo "[he|mhe] [n_parties] [n_triples] [filename]";
+    echo "[he|mhe] [n_parties] [filename]";
 	exit;
 fi
 
@@ -16,16 +16,16 @@ fi
 for (( c=1; c<=$2-1; c++))
 do
 
-  if [ -z "${4+x}" ]; then file=/dev/null; else file=$4_p$c.txt; fi
+  if [ -z "${3+x}" ]; then file=/dev/null; else file=$3_p$c.txt; fi
 
-  docker run --name party-$c --net mpc-net --rm mhe-exps tpl $1 $c $2 $3 &> $file &
+  docker run --name party-$c --net mpc-net --rm mhe-exps tpl $1 $c $2 &> $file &
 
 done
 
 
-if [ -z "${4+x}" ]; then file=/dev/null; else file=$4_p0.txt; fi
+if [ -z "${3+x}" ]; then file=/dev/null; else file=$3_p0.txt; fi
 
-docker run --name party-0 --net mpc-net --rm mhe-exps tpl $1 0 $2 $3 2>&1 | tee -a ${file} 
+docker run --name party-0 --net mpc-net --rm mhe-exps tpl $1 0 $2 2>&1 | tee -a ${file} 
 
 if [ $localNet -ne 0 ]; then
   echo "removing local network"

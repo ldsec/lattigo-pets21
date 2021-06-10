@@ -13,8 +13,8 @@ func main() {
 	prog := os.Args[0]
 	args := os.Args[1:]
 
-	if len(args) < 4 {
-		fmt.Println("Usage:", prog, "[proto] [party ID] [n party] [n beaver]")
+	if len(args) < 3 {
+		fmt.Println("Usage:", prog, "[proto] [party ID] [n party]")
 		os.Exit(1)
 	}
 
@@ -32,10 +32,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	nTriple, errNTriple := strconv.ParseUint(args[3], 10, 64)
-	if errNTriple != nil || nTriple == 0 {
-		fmt.Println("n triples should be a positive integer")
-	}
+	nTriple := uint64(8192)
 
 	if mhe {
 		ClientMHETripleGen(PartyID(partyID), nParties, nTriple)
