@@ -53,9 +53,11 @@ Finally, the `run-tpl-exp.sh` automates the process of running the Beaver-triple
 
 There are two make targets for the clean-up tasks: 
 
-`make clean`: deletes the `output` directory.
+`make clean-output`: deletes the `output` directory.
 
-`make clean-all`: removes the `mhe-exps` images from the Docker host and the `mpc-net` docker network.
+`make clean-docker`: removes the `mhe-exps` images from the Docker host and the `mpc-net` docker network.
+
+`make clean-all`: performes the `clean-output` and `clean-docker` targets.
 
 ## References
 

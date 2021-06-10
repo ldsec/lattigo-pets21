@@ -1,9 +1,12 @@
 docker:
 	docker build -t mhe-exps .
 
-clean:
+clean-output:
 	rm -rf output
 
-clean-all:
+clean-docker:
 	docker image rm mhe-exps
 	docker network rm mpc-net 
+
+clean-all: clean-output clean-docker
+
