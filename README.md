@@ -6,13 +6,13 @@ This repository regroups the software artifacts for the article _Multiparty Homo
 
 The following sowftare items are artifacts of the article:
 
-| Artifact                               | Description                                                                                                       |
-| :------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-|  `lattigo/v2/dbfv`                     | the [Lattigo Go package](https://github.com/ldsec/lattigo/dbfv) implementing the multiparty BFV scheme.           |                                         |
-|  `lattigo-pets21/apps`                 | a Go module importing the `github.com/ldsec/lattigo/v2/dbfv` Lattigo sub-package and implementing the experiments | 
-|  `lattigo-pets21/apps/pir`             | a Go application that implements the PIR experiment                                                               | 
-|  `lattigo-pets21/apps/psi`             | a Go application that implements the PSI experiment                                                               |
-|  `lattigo-pets21/apps/tpl`             | a Go application that implements the Beaver-triples-generation experiment                                         |
+| Artifact                               | Description                                                                                                        |
+| :------------------------------------- | -----------------------------------------------------------------------------------------------------------------  |
+|  `lattigo/v2/dbfv`                     | the [Lattigo Go package](https://github.com/ldsec/lattigo/tree/master/dbfv) implementing the multiparty BFV scheme.|
+|  `lattigo-pets21/apps`                 | a Go module importing the `github.com/ldsec/lattigo/v2/dbfv` Lattigo sub-package and implementing the experiments  |
+|  `lattigo-pets21/apps/pir`             | a Go application that implements the PIR experiment                                                                |
+|  `lattigo-pets21/apps/psi`             | a Go application that implements the PSI experiment                                                                |
+|  `lattigo-pets21/apps/tpl`             | a Go application that implements the Beaver-triples-generation experiment                                          |
 
 
 ## Building
