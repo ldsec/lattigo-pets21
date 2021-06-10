@@ -50,7 +50,7 @@ func ClientHETripleGen(partyID PartyID, nParties, nTriples uint64) {
 
 	peers := make(map[PartyID]string)
 	for i := uint64(0); i < nParties; i++ {
-		peers[PartyID(i)] = fmt.Sprintf("party-%d:50000", i)
+		peers[PartyID(i)] = fmt.Sprintf("mpc-party-%d:50000", i)
 	}
 
 	lp, err := NewLocalParty(PartyID(partyID), peers)
@@ -95,7 +95,7 @@ func ClientMHETripleGen(partyID PartyID, nParties, nTriples uint64) {
 	fmt.Println("> Init")
 	peers := make(map[PartyID]string)
 	for i := uint64(0); i < nParties; i++ {
-		peers[PartyID(i)] = fmt.Sprintf("party-%d:50000", i)
+		peers[PartyID(i)] = fmt.Sprintf("mpc-party-%d:50000", i)
 	}
 
 	tree := NewTree(peers, 2)

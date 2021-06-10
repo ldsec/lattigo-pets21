@@ -18,14 +18,16 @@ do
 
   if [ -z "${3+x}" ]; then file=/dev/null; else file=$3_p$c.txt; fi
 
-  docker run --name party-$c --net mpc-net --rm mhe-exps tpl $1 $c $2 &> $file &
+  docker run --name mpc-party-$c --net mpc-net --rm mhe-exps tpl $1 $c $2 &> $file &
 
 done
 
 
 if [ -z "${3+x}" ]; then file=/dev/null; else file=$3_p0.txt; fi
 
-docker run --name party-0 --net mpc-net --rm mhe-exps tpl $1 0 $2 2>&1 | tee -a ${file} 
+docker run --name mpc-party-0 --net mpc-net --rm mhe-exps tpl $1 0 $2 2>&1 | tee -a ${file} 
+
+docker stop $(docker ps -q -f name=mpc-party) &> /dev/null 
 
 if [ $localNet -ne 0 ]; then
   echo "removing local network"
