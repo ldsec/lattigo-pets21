@@ -6,6 +6,7 @@ import (
 	"io"
 	"net"
 	"syscall"
+	"time"
 
 	"github.com/ldsec/lattigo/v2/bfv"
 	"github.com/ldsec/lattigo/v2/dbfv"
@@ -295,6 +296,11 @@ func (rkg *RkgProtocol) BindNetwork(nw *TCPNetworkStruct) {
 				var round uint64
 				var err error
 				var datalen uint64
+
+				err = conn.SetReadDeadline(time.Now().Add(20 * time.Second))
+				if err != nil {
+					panic(fmt.Errorf("SetReadDeadline failed:", err))
+				}
 
 				err = binary.Read(conn, binary.BigEndian, &id)
 				if err != nil {

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net"
+	"time"
 
 	"github.com/ldsec/lattigo/v2/bfv"
 	"github.com/ldsec/lattigo/v2/ring"
@@ -367,7 +368,6 @@ func (tgp *MHETripleGenProtocol) decryptTriples(round *MHETripleGenRound) (tripl
 func (tgp *MHETripleGenProtocol) BindNetwork(nw *TCPNetworkStruct) {
 
 	var binds []*MHETripleGenRemote
-
 	if tgp.Parent != nil {
 		binds = append(binds, tgp.Parent)
 	}
@@ -388,6 +388,11 @@ func (tgp *MHETripleGenProtocol) BindNetwork(nw *TCPNetworkStruct) {
 				var err error
 				var datalen uint64
 				var round uint64
+
+				err = conn.SetReadDeadline(time.Now().Add(20 * time.Second))
+				if err != nil {
+					panic(fmt.Errorf("SetReadDeadline failed:", err))
+				}
 
 				err = binary.Read(conn, binary.BigEndian, &id)
 				if err == io.EOF {

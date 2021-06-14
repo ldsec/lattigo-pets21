@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io"
 	"net"
+	"time"
 
 	"github.com/ldsec/lattigo/v2/bfv"
 	"github.com/ldsec/lattigo/v2/ring"
@@ -251,6 +252,12 @@ func (tgp *TripleGenProtocol) BindNetwork(nw *TCPNetworkStruct) {
 				var ct bfv.Ciphertext
 				var query bool
 				var err error
+
+				err = conn.SetReadDeadline(time.Now().Add(20 * time.Second))
+				if err != nil {
+					panic(fmt.Errorf("SetReadDeadline failed:", err))
+				}
+
 				ctBuff := make([]byte, wireLen, wireLen)
 				err = binary.Read(conn, binary.BigEndian, &id)
 				if err == io.EOF {
