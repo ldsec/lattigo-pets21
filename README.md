@@ -31,23 +31,34 @@ will build a `mhe-exps` docker image for which the three experiment apps' binari
 
 ### Multiparty-Input-Selection (PIR) and Element-Wise-Vector-Product (PSI) experiments
 
-The PIR and PSI experiments are local and running the client and server within the same process:
+The PIR and PSI experiments are local and running the client and server within the same process. Both programs take the number of input-parties and the number of goroutines (threads) for the circuit-evaluation by the cloud:
 ```
-docker run --rm mhe-exps pir    // runs the PIR experiment
-docker run --rm mhe-exps psi    // runs the PSI experiment
+docker run --rm mhe-exps [psi|pir] [#parties] [#goroutines] 
 ```
+
+Exemples:
+```
+docker run --rm mhe-exps pir  // runs the PIR experiment over 8 parties with a single-threaded cloud evaluation
+
+docker run --rm mhe-exps psi 16 // runs the PSI experiment over 16 parties with a single-threaded cloud evaluation
+
+docker run --rm mhe-exps psi 16 8 // runs the PSI experiment over 16 parties with cloud evaluation using 8 threads
+```
+
 
 ### Multiplication-Triple-Generation experiment
 
 The Beaver-triples-generation experiment runs every party in its own process, by running several instances of the `mhe-exps` image within docker network named `mpc-net`.
 The `run-tpl-parties.sh` script automates the process of starting the experiment for a given generation technique and number of parties. 
 ```
-./run-tpl-parties.sh [he|mhe] [n_parties] [filename]
+./run-tpl-parties.sh [he|mhe] [#parties] [filename]
 ```
 The `stdout` of party 0 is redirected to the host `stdout`. The script also accepts a filename as an option final argument.
 If provided, it saves the `stdout` of each party to a file `[filename]_p[party id].txt`. 
 
-Finally, the `run-tpl-exp.sh` automates the process of running the Beaver-triples-generation experiment for both the `he` and `mhe` generation techniques, for 2 to 16 parties. The `stdout` of each party in each experiment is redirected to a file in the `output` directory.
+Finally, the `run-tpl-exp.sh` automates the process of running the Beaver-triples-generation experiment for both the `he` and `mhe` generation techniques, for 2 to 8 parties. The `stdout` of each party in each experiment is redirected to a file in the `output` directory.
+
+*Note*: Dockerization of the experiment seems to be a little less stable than our initial setting, especially when run on less powerful systems. Some isolated experiments might fail because docker cannot bring the container up fast enough and some tcp connections are sometime reset. These experiments can be restarted indivitually by using the `run-tpl-parties.sh` script with the corresponding arguments.
 
 ## Cleaning up
 
