@@ -38,11 +38,11 @@ docker run --rm mhe-exps [psi|pir] [#parties] [#goroutines]
 
 Exemples:
 ```
-docker run --rm mhe-exps pir  // runs the PIR experiment over 8 parties with a single-threaded cloud evaluation
+docker run --rm mhe-exps pir        # runs the PIR experiment over 8 parties with a single-threaded cloud evaluation
 
-docker run --rm mhe-exps psi 16 // runs the PSI experiment over 16 parties with a single-threaded cloud evaluation
+docker run --rm mhe-exps psi 16     # runs the PSI experiment over 16 parties with a single-threaded cloud evaluation
 
-docker run --rm mhe-exps psi 16 8 // runs the PSI experiment over 16 parties with cloud evaluation using 8 threads
+docker run --rm mhe-exps psi 16 8   # runs the PSI experiment over 16 parties with cloud evaluation using 8 threads
 ```
 
 
