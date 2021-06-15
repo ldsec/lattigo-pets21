@@ -1,6 +1,6 @@
 # Multiparty Homomorphic Encyption from Ring-Learning-with-Errors: Artifacts
 
-This repository regroups the software artifacts for the article _Multiparty Homomorphic Encryption from Ring-Learning-with-Errors_ [1] presented at the 21st Privacy Enhancing Technologies Symposium (PETS'21).
+This repository hosts the software artifacts for the article _Multiparty Homomorphic Encryption from Ring-Learning-with-Errors_ [1] presented at the 21st Privacy Enhancing Technologies Symposium (PETS'21).
 
 ## Artifacts list
 
